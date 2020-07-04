@@ -1,0 +1,165 @@
+@import "./_variables";
+
+html {
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5 {
+    text-transform: uppercase;
+}
+
+.container-fluid, .container-xl, .container-lg, .container-md, .container-sm {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.full-width {
+    margin: 80px 35px;
+}
+
+.header {
+    border-bottom: 1px solid rgba(58, 58, 58, .1);
+}
+
+.navbar {
+    padding: 1rem 1rem;
+
+    .navbar-brand {
+        text-transform: uppercase;
+        color: $orange;
+        font-weight: bold;
+    }
+
+    .navbar-nav {
+        li {
+            &:hover {
+                border-bottom: 3px solid $orange;
+            }
+
+            &.nav-item {
+                padding: 0 10px;
+            }
+
+            &.active {
+                border-bottom: 3px solid $orange;
+            }
+
+            a {
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+.intro {
+    .heading {
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 6rem;
+        margin: -0.75rem;
+    }
+
+    .sub-heading {
+        font-weight: bold;
+        font-size: 2.5rem;
+    }
+}
+
+#intro-description {
+    background: #eee;
+    padding: 100px;
+
+    .intro-text {
+        font-size: 20px;
+    }
+}
+
+#projects {
+    .menu-heading {
+        text-align: center;
+        font-size: 60px;
+    }
+
+    .divider {
+        position: relative;
+        background-image: linear-gradient(#ff9d2f, #ff6126);
+        border-bottom-left-radius: 50% 50%;
+        border-bottom-right-radius: 50% 50%;
+        margin: -10px auto 0 auto;
+        width: 350px;
+        height: 10px;
+        z-index: 1;
+    }
+
+    .row {
+        padding-top: 20px;
+    }
+}
+
+#education {
+    .menu-heading {
+        text-align: center;
+        font-size: 60px;
+    }
+
+    .divider {
+        position: relative;
+        background-image: linear-gradient(#ff9d2f, #ff6126);
+        border-bottom-left-radius: 50% 50%;
+        border-bottom-right-radius: 50% 50%;
+        margin: -10px auto 0 auto;
+        width: 400px;
+        height: 10px;
+        z-index: 1;
+    }
+}
+
+#skills {
+    .menu-heading {
+        text-align: center;
+        font-size: 60px;
+    }
+
+    .sub-heading {
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+
+    & > .divider {
+        position: relative;
+        background-image: linear-gradient(#ff9d2f, #ff6126);
+        border-bottom-left-radius: 50% 50%;
+        border-bottom-right-radius: 50% 50%;
+        margin: -10px auto 0 auto;
+        width: 250px;
+        height: 10px;
+        z-index: 1;
+    }
+
+    .pf-item {
+        padding-top: 20px;
+
+        .row {
+            div {
+                & > .divider {
+                    position: relative;
+                    background-image: linear-gradient(#ff9d2f, #ff6126);
+                    border-bottom-left-radius: 50% 50%;
+                    border-bottom-right-radius: 50% 50%;
+                    margin: -10px auto 0 0;
+                    width: 400px;
+                    height: 5px;
+                    z-index: 1;
+                }
+
+                .pf-skills-list {
+                    margin-top: 15px;
+                }
+            }
+        }
+    }
+}
+
+.text-orange {
+    color: $orange;
+}
