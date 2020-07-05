@@ -1,13 +1,15 @@
 $(document).ready(function () {
   if (window.location.href.split('#').length >= 0) {
     const hash = window.location.href.split('#')[1]
-    $('.navbar').find('.active').removeClass('active')
-    const allMenus = $('.navbar').find('a')
-    allMenus.each((index, item) => {
-      if ($(item).attr('href').split('#')[1] === hash) {
-        $(item).closest('li').addClass('active')
-      }
-    })
+    if (hash) {
+      $('.navbar').find('.active').removeClass('active')
+      const allMenus = $('.navbar').find('a')
+      allMenus.each((index, item) => {
+        if ($(item).attr('href').split('#')[1] === hash) {
+          $(item).closest('li').addClass('active')
+        }
+      })
+    }
   }
 
   $('.navbar').click(event => {
