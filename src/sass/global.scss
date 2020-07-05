@@ -2,7 +2,7 @@
     z-index: 2;
     border-radius: 18px;
     background: white;
-    box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
     text-align: center;
     display: grid;
     grid-template-columns: 450px;
@@ -11,11 +11,11 @@
 
     transition: 0.5s ease;
     cursor: pointer;
-    margin:30px;
+    margin: 30px;
 
     &:hover {
         transform: scale(1.15);
-        box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
     }
 
     .pf-card-image {
@@ -28,8 +28,9 @@
     .pf-card-text {
         grid-area: text;
         margin: 25px;
+
         p {
-            font-size:15px;
+            font-size: 15px;
             font-weight: 300;
         }
     }
@@ -37,6 +38,7 @@
     .technology-list {
         grid-area: list;
         text-align: left;
+
         h3 {
             text-transform: uppercase;
             font-size: 23px;
@@ -44,8 +46,10 @@
             background: #ff00007d;
             box-shadow: 5px 5px 15px rgba(154, 34, 34, 0.9);
         }
+
         ul {
             margin-left: 35px;
+
             li {
             }
         }
@@ -63,5 +67,11 @@
         font-weight: bold;
         border-bottom-left-radius: 15px;
         border-bottom-right-radius: 15px;
+    }
+}
+
+@media only screen and (max-width: $responsive-size) {
+    .pf-card {
+        grid-template-columns: 340px;
     }
 }
