@@ -1,0 +1,67 @@
+.pf-card {
+    z-index: 2;
+    border-radius: 18px;
+    background: white;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
+    text-align: center;
+    display: grid;
+    grid-template-columns: 450px;
+    grid-template-rows: 210px minmax(240px, auto) auto 40px;
+    grid-template-areas: "image" "text" "list" "footer-url";
+
+    transition: 0.5s ease;
+    cursor: pointer;
+    margin:30px;
+
+    &:hover {
+        transform: scale(1.15);
+        box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+    }
+
+    .pf-card-image {
+        grid-area: image;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        background-size: cover !important;
+    }
+
+    .pf-card-text {
+        grid-area: text;
+        margin: 25px;
+        p {
+            font-size:15px;
+            font-weight: 300;
+        }
+    }
+
+    .technology-list {
+        grid-area: list;
+        text-align: left;
+        h3 {
+            text-transform: uppercase;
+            font-size: 23px;
+            padding: 5px 20px;
+            background: #ff00007d;
+            box-shadow: 5px 5px 15px rgba(154, 34, 34, 0.9);
+        }
+        ul {
+            margin-left: 35px;
+            li {
+            }
+        }
+    }
+
+    .pf-card-footer-url {
+        grid-area: footer-url;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-transform: uppercase;
+        color: #fff;
+        background: $orange;
+        font-size: 20px;
+        font-weight: bold;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
+}
