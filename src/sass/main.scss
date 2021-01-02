@@ -107,6 +107,16 @@ section {
 }
 
 #projects {
+    .row {
+        > div {
+            margin-top: 40px;
+        }
+    }
+
+    .section-content-area {
+        margin-bottom: 40px;
+    }
+
     .menu-heading {
         text-align: center;
         font-size: 60px;
