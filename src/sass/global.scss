@@ -18,7 +18,8 @@
     z-index: 2;
     border-radius: 18px;
     background: white;
-    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid transparent;
     text-align: center;
 
     transition: 0.5s ease;
@@ -29,7 +30,6 @@
 
     &:hover {
         transform: scale(1.04);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
     }
 
     .content {
