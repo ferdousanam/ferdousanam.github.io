@@ -51,6 +51,28 @@
             grid-area: text;
             margin: 25px;
 
+            h3 {
+                font-size: 1.7rem;
+            }
+
+            p {
+                font-size: 15px;
+                font-weight: 300;
+            }
+        }
+
+        .pf-key-feature-container {
+            grid-area: list;
+            text-align: left;
+
+            h4 {
+                text-transform: uppercase;
+                font-size: 23px;
+                padding: 5px 20px;
+                background: #ff00007d;
+                box-shadow: 5px 5px 15px rgba(154, 34, 34, 0.9);
+            }
+
             p {
                 font-size: 15px;
                 font-weight: 300;
