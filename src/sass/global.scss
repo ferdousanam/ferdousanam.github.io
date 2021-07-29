@@ -16,7 +16,7 @@
 
 .pf-card-container {
     z-index: 2;
-    border-radius: 18px;
+    border-radius: 5px;
     background: white;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
     border: 2px solid transparent;
@@ -27,6 +27,7 @@
     display: flex;
     flex-flow: column;
     height: 100%;
+    margin: 10px;
 
     &:hover {
         transform: scale(1.04);
@@ -39,20 +40,21 @@
 
         .pf-card-image {
             width: 100%;
-            height: 180px;
+            height: 360px;
             grid-area: image;
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
+            //border-top-left-radius: 5px;
+            //border-top-right-radius: 5px;
             background-size: cover !important;
             box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
         }
 
         .pf-card-text {
             grid-area: text;
-            margin: 25px;
+            margin: 12px;
 
             h3 {
-                font-size: 1.7rem;
+                font-size: 20px;
+                font-weight: 700;
             }
 
             p {
@@ -76,6 +78,13 @@
             p {
                 font-size: 15px;
                 font-weight: 300;
+            }
+
+            ul {
+                margin-left: 35px;
+
+                li {
+                }
             }
         }
 
@@ -115,8 +124,8 @@
             background: $orange;
             font-size: 20px;
             font-weight: bold;
-            border-bottom-left-radius: 15px;
-            border-bottom-right-radius: 15px;
+            //border-bottom-left-radius: 15px;
+            //border-bottom-right-radius: 15px;
             padding: 5px;
         }
     }
