@@ -1,0 +1,28 @@
+image: node
+
+build:
+    stage: build
+    cache:
+        paths:
+            - node_modules/
+    script:
+        - npm install
+        - npm run production
+        - mkdir .build
+        - cp -r * .build
+        - mv .build build
+    artifacts:
+        paths:
+            - build
+
+pages:
+    stage: deploy
+    dependencies:
+        - build
+    script:
+        - mv build public
+    artifacts:
+        paths:
+            - public
+    rules:
+        -   if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
