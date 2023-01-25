@@ -18,7 +18,14 @@ if (mix.inProduction()) {
   });
 }
 
-mix.js('src/js/app.js', 'assets/js')
-  .sass('src/sass/app.scss', 'assets/css')
-  .setPublicPath('assets')
-  .setResourceRoot('../../assets');
+mix.js('src/js/app.js', 'js')
+  .sass('src/sass/app.scss', 'css');
+
+const publicPath = 'assets/';
+mix.setPublicPath('assets');
+mix.setResourceRoot('../');
+mix.webpackConfig({
+  output: {
+    publicPath,
+  },
+});

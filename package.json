@@ -1,36 +1,37 @@
 {
-  "name": "ferdousanam",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "npm run development",
-    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "npm run development -- --watch",
-    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "prod": "npm run production",
-    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "postinstall": "npm run production",
-    "start": "node server.js"
-  },
-  "keywords": [],
-  "author": "Ferdous Anam",
-  "license": "ISC",
-  "dependencies": {
-    "@fancyapps/fancybox": "^3.5.7",
-    "bootstrap": "^4.5.0",
-    "devicon": "^2.2.0",
-    "devicons": "^1.8.0",
-    "express": "^4.17.1",
-    "jquery": "^3.5.1",
-    "popper.js": "^1.16.1"
-  },
-  "devDependencies": {
-    "cross-env": "^7.0.2",
-    "laravel-mix": "^5.0.4",
-    "resolve-url-loader": "^3.1.0",
-    "sass": "^1.26.9",
-    "sass-loader": "^8.0.2",
-    "vue-template-compiler": "^2.6.11"
-  }
+    "private": true,
+    "name": "ferdousanam",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "keywords": [],
+    "author": "Ferdous Anam",
+    "license": "ISC",
+    "scripts": {
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production",
+        "postinstall": "npm run production",
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "@fancyapps/fancybox": "^3.5.7",
+        "bootstrap": "^4.6.2",
+        "devicon": "^2.2.0",
+        "devicons": "^1.8.0",
+        "express": "^4.17.1",
+        "jquery": "^3.6.3",
+        "popper.js": "^1.16.1"
+    },
+    "devDependencies": {
+        "laravel-mix": "^6.0.6",
+        "postcss": "^8.1.14",
+        "resolve-url-loader": "^5.0.0",
+        "sass": "^1.32.11",
+        "sass-loader": "^11.0.1"
+    }
 }
