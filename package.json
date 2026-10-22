@@ -1,37 +1,27 @@
 {
     "private": true,
-    "name": "ferdousanam",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "keywords": [],
+    "name": "ferdousanam-portfolio",
+    "version": "2.0.0",
+    "type": "module",
+    "description": "Portfolio website of Ferdous Anam",
     "author": "Ferdous Anam",
     "license": "ISC",
-    "scripts": {
-        "dev": "npm run development",
-        "development": "mix",
-        "watch": "mix watch",
-        "watch-poll": "mix watch -- --watch-options-poll=1000",
-        "hot": "mix watch --hot",
-        "prod": "npm run production",
-        "production": "mix --production",
-        "postinstall": "npm run production",
-        "start": "node server.js"
+    "engines": {
+        "node": "^20.19.0 || >=22.12.0"
     },
-    "dependencies": {
-        "@fancyapps/fancybox": "^3.5.7",
-        "bootstrap": "^4.6.2",
-        "devicon": "^2.2.0",
-        "devicons": "^1.8.0",
-        "express": "^4.17.1",
-        "jquery": "^3.6.3",
-        "popper.js": "^1.16.1"
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "start": "vite"
     },
     "devDependencies": {
-        "laravel-mix": "^6.0.6",
-        "postcss": "^8.1.14",
-        "resolve-url-loader": "^5.0.0",
-        "sass": "^1.32.11",
-        "sass-loader": "^11.0.1"
+        "@fontsource-variable/manrope": "^5.3.0",
+        "@fontsource-variable/space-grotesk": "^5.3.0",
+        "bootstrap": "^5.3.8",
+        "bootstrap-icons": "^1.13.2",
+        "glightbox": "^3.3.1",
+        "sass": "^1.106.1",
+        "vite": "^8.3.5"
     }
 }

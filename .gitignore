@@ -1,4 +1,9 @@
 .idea
+.vite
 node_modules
-assets/css
-assets/js
+dist
+.DS_Store
+*.log
+.env
+.env.local
+.env.*.local

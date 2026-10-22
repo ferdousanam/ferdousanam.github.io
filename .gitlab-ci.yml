@@ -1,28 +1,31 @@
-image: node
+image: node:24
 
 build:
     stage: build
     cache:
+        key:
+            files:
+                - package-lock.json
         paths:
             - node_modules/
     script:
-        - npm install
-        - npm run production
-        - mkdir .build
-        - cp -r * .build
-        - mv .build build
+        # Configure the required VITE_* values in Settings > CI/CD > Variables.
+        - npm ci
+        - npm run build
+        - rm -rf public
+        - mv dist public
     artifacts:
         paths:
-            - build
+            - public
 
 pages:
     stage: deploy
     dependencies:
         - build
     script:
-        - mv build public
+        - test -d public
     artifacts:
         paths:
             - public
     rules:
-        -   if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+        - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
