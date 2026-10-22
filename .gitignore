@@ -7,3 +7,6 @@ dist
 .env
 .env.local
 .env.*.local
+src/scss/_icons.scss
+src/assets/fonts/bootstrap-icons-subset.woff2
+public/images/profile.webp

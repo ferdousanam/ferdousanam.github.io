@@ -1,11 +1,8 @@
 import '@fontsource-variable/manrope';
 import '@fontsource-variable/space-grotesk';
-import 'bootstrap-icons/font/bootstrap-icons.css';
-import 'glightbox/dist/css/glightbox.min.css';
 import '../scss/main.scss';
 
-import * as bootstrap from 'bootstrap';
-import GLightbox from 'glightbox';
+import Collapse from 'bootstrap/js/dist/collapse';
 
 const root = document.documentElement;
 const themeToggle = document.getElementById('themeToggle');
@@ -66,23 +63,37 @@ const sections = navLinks
     })
     .filter(Boolean);
 
+let navThreshold = 220;
+let documentHeight = 0;
+let sectionOffsets = [];
+
+const measureLayout = () => {
+    const scrollY = window.scrollY;
+
+    navThreshold = (nav?.offsetHeight ?? 80) + 140;
+    documentHeight = document.documentElement.scrollHeight;
+    sectionOffsets = sections.map(({ id, section }) => ({
+        id,
+        top: section.getBoundingClientRect().top + scrollY,
+    }));
+};
+
 const updateActiveNav = () => {
-    if (!sections.length) {
+    if (!sectionOffsets.length) {
         return;
     }
 
-    const threshold = (nav?.offsetHeight ?? 80) + 140;
-    let activeId = sections[0].id;
+    const limit = window.scrollY + navThreshold;
+    let activeId = sectionOffsets[0].id;
 
-    sections.forEach(({ id, section }) => {
-        if (section.getBoundingClientRect().top <= threshold) {
+    sectionOffsets.forEach(({ id, top }) => {
+        if (top <= limit) {
             activeId = id;
         }
     });
 
-    const documentHeight = document.documentElement.scrollHeight;
     if (window.innerHeight + window.scrollY >= documentHeight - 4) {
-        activeId = sections[sections.length - 1].id;
+        activeId = sectionOffsets[sectionOffsets.length - 1].id;
     }
 
     navLinks.forEach((link) => {
@@ -116,14 +127,23 @@ const requestScrollUpdate = () => {
     });
 };
 
+measureLayout();
 onScroll();
 window.addEventListener('scroll', requestScrollUpdate, { passive: true });
-window.addEventListener('resize', requestScrollUpdate);
+window.addEventListener('resize', () => {
+    measureLayout();
+    requestScrollUpdate();
+});
+window.addEventListener('load', measureLayout);
+document.fonts?.ready.then(() => {
+    measureLayout();
+    onScroll();
+});
 
 navMenu?.querySelectorAll('.nav-link').forEach((link) => {
     link.addEventListener('click', () => {
         if (navMenu.classList.contains('show')) {
-            bootstrap.Collapse.getOrCreateInstance(navMenu).hide();
+            Collapse.getOrCreateInstance(navMenu).hide();
         }
     });
 });
@@ -158,14 +178,40 @@ if ('IntersectionObserver' in window && !reduceMotion) {
     revealItems.forEach((item) => item.classList.add('is-visible'));
 }
 
-if (document.querySelector('.glightbox')) {
-    GLightbox({
-        selector: '.glightbox',
-        loop: true,
-        touchNavigation: true,
-        draggable: true,
-        zoomable: false,
-        openEffect: 'zoom',
-        closeEffect: 'fade',
-    });
-}
+let lightbox = null;
+let lightboxLoading = null;
+
+const loadLightbox = () => {
+    if (!lightboxLoading) {
+        lightboxLoading = Promise.all([
+            import('glightbox'),
+            import('glightbox/dist/css/glightbox.min.css'),
+        ]).then(([{ default: GLightbox }]) => {
+            lightbox = GLightbox({
+                selector: '.glightbox',
+                loop: true,
+                touchNavigation: true,
+                draggable: true,
+                zoomable: false,
+                openEffect: 'zoom',
+                closeEffect: 'fade',
+            });
+
+            return lightbox;
+        });
+    }
+
+    return lightboxLoading;
+};
+
+document.addEventListener('click', async (event) => {
+    const link = event.target.closest('a.glightbox');
+
+    if (!link || lightbox) {
+        return;
+    }
+
+    event.preventDefault();
+    const instance = await loadLightbox();
+    instance.open(link);
+});
