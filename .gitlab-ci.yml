@@ -3,18 +3,20 @@ image: node:24
 build:
     stage: build
     variables:
-        VITE_SITE_URL: https://ferdousanam.gitlab.io
+        NEXT_PUBLIC_SITE_URL: https://ferdousanam.gitlab.io
+        NEXT_TELEMETRY_DISABLED: "1"
     cache:
         key:
             files:
                 - package-lock.json
         paths:
             - node_modules/
+            - .next/cache/
     script:
         - npm ci
         - npm run build
         - rm -rf public
-        - mv dist public
+        - mv out public
     artifacts:
         paths:
             - public

@@ -1,12 +1,13 @@
-import { readFile, writeFile, mkdir } from 'node:fs/promises';
-import { dirname, resolve } from 'node:path';
+import { readFile, writeFile, mkdir, readdir } from 'node:fs/promises';
+import { dirname, extname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 import sharp from 'sharp';
 import subsetFont from 'subset-font';
 
 const defaultRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const scanPaths = ['index.html', 'src/js/main.js'];
+const scanRoots = ['app', 'components', 'data', 'lib', 'src'];
+const sourceExtensions = new Set(['.ts', '.tsx', '.js', '.jsx', '.scss', '.html']);
 const extraIcons = ['moon-stars'];
 
 const baseRules = `.bi::before,
@@ -25,11 +26,43 @@ const baseRules = `.bi::before,
 }
 `;
 
+async function sourceFiles(directory) {
+    let entries;
+
+    try {
+        entries = await readdir(directory, { withFileTypes: true });
+    } catch {
+        return [];
+    }
+
+    const files = [];
+
+    for (const entry of entries) {
+        const fullPath = resolve(directory, entry.name);
+
+        if (entry.isDirectory()) {
+            files.push(...(await sourceFiles(fullPath)));
+        } else if (sourceExtensions.has(extname(entry.name))) {
+            files.push(fullPath);
+        }
+    }
+
+    return files;
+}
+
 async function usedIconNames(root) {
     const names = new Set(extraIcons);
+    const generatedIcons = resolve(root, 'src/scss/_icons.scss');
+    const files = (
+        await Promise.all(scanRoots.map((directory) => sourceFiles(resolve(root, directory))))
+    ).flat();
 
-    for (const relativePath of scanPaths) {
-        const text = await readFile(resolve(root, relativePath), 'utf8');
+    for (const file of files) {
+        if (file === generatedIcons) {
+            continue;
+        }
+
+        const text = await readFile(file, 'utf8');
 
         for (const [, name] of text.matchAll(/\bbi-([a-z0-9-]+)\b/g)) {
             if (name !== 'icons') {
