@@ -107,7 +107,7 @@ export default function Projects() {
                                             target="_blank"
                                             rel="noopener noreferrer"
                                         >
-                                            Visit website
+                                            {project.linkLabel ?? 'Visit website'}
                                             <i className="bi bi-arrow-up-right" aria-hidden="true" />
                                         </a>
                                     ) : (

@@ -28,6 +28,7 @@ export type Project = {
         description: string;
     };
     href?: string;
+    linkLabel?: string;
     status?: string;
     delay?: string;
 };
@@ -91,7 +92,8 @@ export const earlierProjects: Project[] = [
             title: 'Short Term Rental',
             description: 'Property management system for short-term rentals.',
         },
-        href: 'https://str-stage.prochamps.com',
+        href: 'https://facebook.com/prochampsofficial',
+        linkLabel: 'View on Facebook',
     },
     {
         category: 'Marketplace',
@@ -110,7 +112,7 @@ export const earlierProjects: Project[] = [
             title: 'Garivara Car Rental',
             description: 'Car rental portal for users, drivers, merchants and admins.',
         },
-        href: 'https://dev.garivara.com.bd/',
+        href: 'https://garivara.com.bd',
         delay: '.08s',
     },
     {
@@ -130,14 +132,14 @@ export const earlierProjects: Project[] = [
             title: 'Tours & Travels',
             description: 'Tours and travel management system for Hajj and Umrah operations.',
         },
-        href: 'https://acquaintbd.com/travelsoft/',
+        href: 'https://acquaintbd.com/travel-agency-management-system-software',
     },
     {
-        category: 'E-commerce',
+        category: 'University Project',
         stack: 'CodeIgniter',
         title: 'Electronics Shop',
         description:
-            'An online store for electronics with advanced filtering and separate user and admin panels, built with the CodeIgniter framework.',
+            'A university project developing an online store for electronics with advanced filtering and separate user and admin panels, built with the CodeIgniter framework.',
         tech: ['PHP', 'CodeIgniter', 'JavaScript', 'Bootstrap'],
         image: {
             src: '/images/eshop.jpg',
@@ -147,9 +149,11 @@ export const earlierProjects: Project[] = [
         },
         lightbox: {
             title: 'Electronics Shop',
-            description: 'E-commerce store for electronics with user and admin panels.',
+            description: 'University project: e-commerce store for electronics with user and admin panels.',
         },
-        status: 'Internal project',
+        status: 'University project',
+        href: 'https://github.com/sw-team7/eshop',
+        linkLabel: 'View on GitHub',
         delay: '.08s',
     },
 ];
