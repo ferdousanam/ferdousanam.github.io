@@ -7,6 +7,7 @@ const facebook = read(process.env.NEXT_PUBLIC_FACEBOOK_URL, 'https://fb.me/ferdo
 
 export const site = {
     name: 'Ferdous Anam',
+    nativeName: 'ফেরদাউস আনম',
     title: 'Ferdous Anam — CTO at OSHNI SOFTWARE',
     jobTitle: 'Chief Technology Officer',
     company: 'OSHNI SOFTWARE',

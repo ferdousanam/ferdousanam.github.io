@@ -24,6 +24,7 @@ export const metadata: Metadata = {
     publisher: site.name,
     keywords: [
         'Ferdous Anam',
+        'ফেরদাউস আনম',
         'CTO',
         'OSHNI SOFTWARE',
         'Laravel developer',
@@ -85,6 +86,7 @@ const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: site.name,
+    alternateName: site.nativeName,
     url: `${site.url}/`,
     jobTitle: site.jobTitle,
     email: `mailto:${site.email}`,
